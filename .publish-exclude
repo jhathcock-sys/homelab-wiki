@@ -1,0 +1,40 @@
+# .publish-exclude
+# Files and patterns to exclude from wiki publishing
+# These files will NOT be synced from homelab-docs to homelab-wiki
+
+# Sensitive documentation
+**/credentials.md
+**/passwords.md
+**/secrets.md
+**/private*.md
+**/confidential*.md
+
+# Obsidian metadata
+**/.obsidian/**
+.obsidian
+
+# Git metadata
+**/.git/**
+.gitignore
+
+# Temporary and backup files
+**/*.tmp
+**/*.bak
+**/*~
+**/.DS_Store
+
+# Draft and work-in-progress
+**/drafts/**
+**/*draft*.md
+**/*wip*.md
+**/*TODO*.md
+
+# Personal notes (adjust as needed)
+**/personal/**
+**/journal/**
+**/daily/**
+
+# Add specific files here as needed
+# Example:
+# infrastructure/vpn-config.md
+# security/incident-reports/**
