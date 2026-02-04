@@ -1,20 +1,22 @@
 # .publish-exclude
 # Files and patterns to exclude from wiki publishing
 # These files will NOT be synced from homelab-docs to homelab-wiki
+# Uses rsync exclude syntax
 
 # Sensitive documentation
-**/credentials.md
-**/passwords.md
-**/secrets.md
-**/private*.md
-**/confidential*.md
+credentials.md
+passwords.md
+secrets.md
+private*.md
+confidential*.md
 
 # Obsidian metadata
-**/.obsidian/**
+.obsidian/
 .obsidian
 
 # Git metadata
-**/.git/**
+.git/
+.git
 .gitignore
 
 # Temporary and backup files

@@ -51,7 +51,9 @@ if [ -f "$EXCLUDE_FILE" ]; then
 fi
 
 # Rsync command to copy markdown and image files
+# Note: Order matters! Excludes must come before includes
 rsync -av --delete \
+    $EXCLUDE_OPTS \
     --include='*/' \
     --include='*.md' \
     --include='*.png' \
@@ -60,7 +62,6 @@ rsync -av --delete \
     --include='*.gif' \
     --include='*.svg' \
     --exclude='*' \
-    $EXCLUDE_OPTS \
     "$SOURCE_DIR/" "$TARGET_DIR/"
 
 echo -e "${GREEN}✓ Content synced successfully${NC}"
