@@ -5,10 +5,10 @@
 | Category | Links |
 |----------|-------|
 | **Infrastructure** | [[Network-Topology]] · [[GitOps-Workflow]] · [[Workstation-Setup]] |
-| **Services** | [[Homepage-Dashboard]] · [[Dockhand]] · [[NAS-Synology]] · [[Pi-hole]] · [[Minecraft-Server]] · [[Homebox]] |
+| **Services** | [[Homepage-Dashboard]] · [[Dockhand]] · [[NAS-Synology]] · [[Pi-hole]] · [[Minecraft-Server]] · [[Homebox]] · [[Obsidian-LiveSync]] |
 | **Monitoring** | [[_Monitoring-Stack]] · [[Prometheus]] · [[Grafana]] · [[Alertmanager]] · [[Loki]] |
 | **Security** | [[Wazuh-SIEM]] · [[Security-Hardening]] · [[Best-Practices]] · [[Monitoring-Stack-Security-Audit]] |
-| **Projects** | [[Podcast-Studio]] · [[Portfolio-Site]] · [[Claude-Memory-System]] · [[Claude-Code-Agents]] |
+| **Projects** | [[Podcast-Studio]] · [[Portfolio-Site]] · [[Homelab-Wiki]] · [[Claude-Memory-System]] · [[Claude-Code-Agents]] |
 | **Reference** | [[Personal-Context]] · [[Docker-Commands]] · [[Troubleshooting]] · [[Environment-Files]] · [[GitHub-Repositories]] |
 | **Planning** | [[Future-Plans]] · [[Current-TODO]] |
 | **Changelog** | [[_Changelog-Index]] |
@@ -31,7 +31,7 @@ This document covers the setup and configuration of the Hathcock Infrastructure 
 | 192.168.1.XXX | Nginx Proxy Manager | Reverse proxy |
 | 192.168.1.XXX | Wazuh VM (Debian 12) | SIEM - manager, indexer, dashboard |
 | 192.168.1.XXX | Podcast Studio | Video recording platform (LiveKit, multi-track 4K) |
-| 192.168.1.XXX | Pi5 (Raspberry Pi 5) | Secondary DNS, Tailscale, Mealie |
+| 192.168.1.XXX | Pi5 (Raspberry Pi 5) | Secondary DNS, Tailscale, Mealie, Obsidian LiveSync (CouchDB) |
 | 192.168.1.XXX | Proxmox | Hypervisor |
 
 ---
@@ -47,7 +47,6 @@ This document covers the setup and configuration of the Hathcock Infrastructure 
 | mc-server | minecraft | 25565, 19132/udp | healthy |
 | uptime-kuma | uptimekuma | 3001 | healthy |
 | dockhand | dockhand | 3000 | healthy |
-| syncthing | - | 8384 | healthy |
 | grafana | monitoring | 3030 | healthy |
 | prometheus | monitoring | 9090 | healthy |
 | alertmanager | monitoring | 9093 | healthy |
