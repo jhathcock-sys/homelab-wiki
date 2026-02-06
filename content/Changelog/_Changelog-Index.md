@@ -6,6 +6,8 @@
 
 ## Recent Changes
 
+- **2026-02-04:** [[2026-02-04-GitOps-Drift-Detection|GitOps Drift Detection]] - Created automated drift detection script (`scripts/drift-detection.sh`) to validate infrastructure matches repository. Checks 21 containers across ProxMoxBox and Pi5. Removed nginx-proxy-manager compose file (LXC, not Docker). Synced missing Pi5 stacks (mealie, node-exporter, obsidian-livesync) to `proxmox/pi5-stacks/` for Hawser remote management. Infrastructure now validates clean. (commits `ba4061e`, `cdc75f4`)
+
 - **2026-02-04:** [[2026-02-04-NAS-Integration|NAS Integration]] - Integrated Synology DS220j (7.2TB) with homelab infrastructure. SNMP monitoring added to Prometheus for network metrics. Wazuh agent skipped due to ARM64 incompatibility. Syslog forwarding partially implemented (messages arriving but format mismatch). SMB shares successfully mounted on both ProxMoxBox (via Proxmox host bind mount) and Pi5 with full Docker container access. Storage ready for media stack and backups. (commits `31c7047`, `96e55ef`)
 
 - **2026-02-04:** [[2026-02-04-Container-Resources|Container Resource Management]] - Added comprehensive memory limits to all 20 containers across ProxMoxBox and Pi5. Analyzed usage patterns, set appropriate limits (768MB for Prometheus down to 64MB for node-exporter). Total: 9.5GB allocated on 8GB host with very safe 1.19x overcommit. (commits `e266a08`, `e301826`)
@@ -76,6 +78,7 @@ Homarr was removed in favor of [[Homepage-Dashboard]] as the primary dashboard:
 ## Detailed Session Notes
 
 ### 2026-02
+- [[2026-02-04-GitOps-Drift-Detection]]
 - [[2026-02-04-NAS-Integration]]
 - [[2026-02-04-Container-Resources]]
 - [[2026-02-03-Security-Hardening]]

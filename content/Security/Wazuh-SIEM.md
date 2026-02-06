@@ -123,6 +123,57 @@ systemctl restart wazuh-manager
 
 ---
 
+## Troubleshooting
+
+### Static IP Issues (Fixed 2026-02-05)
+
+**Issue:** VM randomly changed from static IP 192.168.1.XXX to DHCP-assigned 192.168.1.XXX, breaking agent connectivity.
+
+**Root Cause:** `dhclient` process running in background, overriding static IP configuration in `/etc/network/interfaces`.
+
+**Solution Implemented:**
+1. Killed rogue dhclient process: `kill <pid>`
+2. Disabled cloud-init network config:
+   ```bash
+   echo "network: {config: disabled}" > /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
+   ```
+3. Created systemd service to prevent dhclient at boot:
+   ```bash
+   # /etc/systemd/system/ensure-static-ip.service
+   [Unit]
+   Description=Ensure Static IP and Kill DHCP Client
+   After=network-pre.target
+   Before=network.target
+
+   [Service]
+   Type=oneshot
+   ExecStart=/bin/bash -c 'killall dhclient 2>/dev/null || true'
+   RemainAfterExit=yes
+
+   [Install]
+   WantedBy=multi-user.target
+   ```
+4. Enabled service: `systemctl enable ensure-static-ip.service`
+
+**Preventive Measures:**
+- Static IP configuration in `/etc/network/interfaces` remains unchanged
+- Added DHCP reservation on router: MAC `XX:XX:XX:XX:XX:XX` → IP `192.168.1.XXX`
+- Monitor IP stability: `ssh root@192.168.1.XXX "ip addr show ens18 | grep 'inet '"`
+
+**Verification:**
+```bash
+# Check no DHCP client running
+ps aux | grep dhclient | grep -v grep
+
+# Verify static IP
+ip addr show ens18 | grep "inet "
+
+# Check agent connectivity
+/var/ossec/bin/agent_control -l
+```
+
+---
+
 ## Future Enhancements
 
 - [x] ~~Rebuild with Debian 12~~ - Completed 2026-02-02
