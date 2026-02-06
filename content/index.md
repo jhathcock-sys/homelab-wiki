@@ -13,7 +13,7 @@ Welcome to the Hathcock Infrastructure homelab documentation. This wiki covers a
 ## Quick Navigation
 
 ### 🏗️ Infrastructure
-- [[Network-Topology]] - IP assignments and network layout (192.168.1.0/24)
+- [[Network-Topology]] - IP assignments and network layout (192.168.1.XXX/24)
 - [[GitOps-Workflow]] - Repository structure and deployment practices
 - [[Workstation-Setup]] - Laptop configuration and tooling
 
