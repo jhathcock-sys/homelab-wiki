@@ -6,6 +6,10 @@
 
 ## Recent Changes
 
+- **2026-02-05:** [[2026-02-05-Memory-System-2.0|Memory System 2.0 - Symlink Architecture]] - Complete architectural refactoring of Claude Code memory system. Implemented symlink-based workflow eliminating manual sync commands. Consolidated duplicate directories into `global/`, `session/`, `projects/` structure. Created helper scripts (`install-symlinks.sh`, `sync.sh`). Reduced global memory to ~3KB, expanded session to ~8KB. Added `.gitignore` for credential protection. Sync workflow improved from 3 commands → 1 command, edit-to-commit from ~2 minutes → ~10 seconds. (commits `da44f38`, `4bbba5a`)
+
+- **2026-02-04:** [[2026-02-04-Memory-Architecture-Refactoring|Memory Architecture Refactoring]] - Refactored Claude Code memory system (v1.0) to eliminate duplication and secure credentials. Reduced global memory from 123→100 lines by offloading verbose descriptions to project memories. Moved all credentials to gitignored CLAUDE.internal.md files. Expanded memory tree to document all 5 projects (homelab-ops, homelab-docs, podcast-studio, my-portfolio, ai-assistant-config). Verified no credentials in committed files. (commit `c837298`)
+
 - **2026-02-04:** [[2026-02-04-GitOps-Drift-Detection|GitOps Drift Detection]] - Created automated drift detection script (`scripts/drift-detection.sh`) to validate infrastructure matches repository. Checks 21 containers across ProxMoxBox and Pi5. Removed nginx-proxy-manager compose file (LXC, not Docker). Synced missing Pi5 stacks (mealie, node-exporter, obsidian-livesync) to `proxmox/pi5-stacks/` for Hawser remote management. Infrastructure now validates clean. (commits `ba4061e`, `cdc75f4`)
 
 - **2026-02-04:** [[2026-02-04-NAS-Integration|NAS Integration]] - Integrated Synology DS220j (7.2TB) with homelab infrastructure. SNMP monitoring added to Prometheus for network metrics. Wazuh agent skipped due to ARM64 incompatibility. Syslog forwarding partially implemented (messages arriving but format mismatch). SMB shares successfully mounted on both ProxMoxBox (via Proxmox host bind mount) and Pi5 with full Docker container access. Storage ready for media stack and backups. (commits `31c7047`, `96e55ef`)
@@ -78,6 +82,8 @@ Homarr was removed in favor of [[Homepage-Dashboard]] as the primary dashboard:
 ## Detailed Session Notes
 
 ### 2026-02
+- [[2026-02-05-Memory-System-2.0]]
+- [[2026-02-04-Memory-Architecture-Refactoring]]
 - [[2026-02-04-GitOps-Drift-Detection]]
 - [[2026-02-04-NAS-Integration]]
 - [[2026-02-04-Container-Resources]]
